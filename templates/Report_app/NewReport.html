@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+
+        <div id="rep_form" >
+                              
+            <!--    Django      -->
+            <form style="padding-left: 5px; " method="post" action="/AddNewReport"> 
+              {% csrf_token %}
+              <table>
+                <tr>
+                <td>  <label>Patient's Name :</label></td>
+                <td>  <input type="text"name="patient_name"></td>
+                </tr></br>
+                <tr>
+                  <td>  <label>Nature of Specimen  :</label></td>
+                  <td>  <input type="text" name="nature_of_specimen"></td>
+                  </tr></br>
+                 
+                <tr>
+                <td><label>Age </label></td>
+                <td><input type="age"name="age"></td>
+                </tr>
+              </br>
+
+                <tr>
+                <td><label for="P_gender">Gender</label></td>
+                <td>
+                    <select name="gender" id="P_gender">
+                   <option value="male">Male</option>
+                  <option value="female">Female</option>
+                    </select>
+                </td>
+              </tr>
+            </br>
+              <tr>
+                <td><label for="Rep_date">Report Issued at</label></td>
+                <td><input type="date" id="Rep_date" name="report_issued_at"></td>
+                </tr><br>
+
+
+              </table>
+                <hr>
+                <span style="text-align: center;font-size: larger;margin-left: 250px;">Pathology Report</span>
+                <p><label for="G_exam" style="margin-left:15px ;">Gross Examination</label></p>
+                <textarea id="G_exam" name="groos_examination" rows="5" cols="50" style="margin-left:15px ; margin-right: 15px;"></textarea>
+                <br> <br>
+                <p><label for="M_exam" style="margin-left:15px ;">Microscopic Examination</label></p>
+                <textarea id="M_exam" name="microscopic_examination" rows="5" cols="50" style="margin-left:15px ;margin-right: 15px;"></textarea>
+                <br> <br>
+                <p><label for="Diag" style="margin-left:15px ;">Diagnosis</label></p>
+                <textarea id="Diag" name="diagnosis" rows="5" cols="50" style="margin-left:15px ;margin-right: 15px;"></textarea>
+                <br> <br>
+                <br>
+                <hr>
+                <input type="text" id="Sign" name="signature" style="float: right;margin-right: 15px;">
+                <label for="Sign" style="float: right;">Signature</label>
+                <br> <br> <br>
+                <input id="add_req" type="submit" value="ADD Report" >
+                <br> <br>
+              
+            </form>
+               
+        </div>
+        <br> <br> 
+        
+<a href="openPrintPreview">
+        <p style="margin-left:900px ;"><button id="spdata" style="margin-left:50px ;  font-size: larger; width: max-content;">Print</button></p>
+</a>
+{% endblock %}
+
+      

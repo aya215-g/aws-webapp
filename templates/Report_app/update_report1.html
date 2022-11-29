@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% load crispy_forms_filters %}
+{% load crispy_forms_tags %}
+{% load static %}
+
+{% block content %}
+<div id="rep_form" style="width: 60%;font-size: small;font-weight: bold;">
+   <form style="padding-left: 5px; " method="POST">
+        <!-- Security token by Django -->
+        {% csrf_token %}
+<table>
+    <tr>{{ form.patient_name  }}</tr>
+    <hr>
+    <tr>{{ form.age  }}</tr>
+    <hr>
+    <tr>{{ form.gender  }}</tr>
+    <hr>
+    <tr>{{ form.report_issued_at  }}</tr>
+    <hr>
+    <tr >{{ form.nature_of_specimen  }}</tr>
+    <hr>
+    <tr >{{ form.groos_examination  }}</tr>
+    <hr>
+    <tr >{{ form.microscopic_examination  }}</tr>
+    <hr>
+    <tr >{{ form.diagnosis  }}</tr>
+    <hr>
+    <tr>{{ form.signature  }}</tr>
+    <hr>
+</table>
+
+
+
+
+
+
+        <input type="submit" value="Update">
+    </form>
+</div>
+{% endblock %}
+
+

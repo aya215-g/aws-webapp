@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+        <div id="specimen_form">
+          <!--   Django  -->
+         <form method="post" action="/AddNewSpecimen">
+          {% csrf_token %}
+             <p><label for="SP_nature" style="margin-left:15px ;">Nature of Specimen</label></p>
+             <textarea id="SP_nature" name="nature_of_specimen" rows="5" cols="50" style="margin-left:15px ;margin-right: 15px;"></textarea>
+             <br> <br>
+
+             <label for="SP_size" style="margin-left:15px ;">Size:</label>
+             <select name="specimen_size" id="Sp_size"style="margin-left:35px ;">
+               <option value="small">Small</option>
+               <option value="medium">Medium</option>
+               <option value="large">Large</option>
+             </select>
+             
+             <br> <br> <br>
+             <label for="slides_num" style="margin-left:15px ;">Number of Slides</label>
+             <input id="slides_num" type="number" name="number_of_slides">
+             <br> <hr>
+             <input type="submit" value="ADD New Specimen" style="float: right;margin-right: 15px;cursor: pointer; font-size: 22px; margin-bottom: 15px;">
+             <br> <br> 
+          </form>
+         
+
+        </div>
+
+{% endblock %}

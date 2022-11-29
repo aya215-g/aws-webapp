@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+    <div id="specimen_form">
+          <!--   Django  -->
+         <form method="post" action="{% url 'editSpecimen' spec.pk %}">
+          {% csrf_token %}
+             <p><label for="SP_nature" style="margin-left:15px ;">Nature of Specimen</label></p>
+             <textarea id="SP_nature" name="nature_of_specimen"  rows="5" cols="50" style="margin-left:15px ;margin-right: 15px;"> {{spec.nature_of_specimen}}</textarea>
+             <br> <br>
+
+             <label for="SP_size" style="margin-left:15px ;">Size:</label>
+             {% if spec.specimen_size == 'Small' %}
+             <select name="specimen_size" id="Sp_size"style="margin-left:35px ;">
+               <option value="Small" selected="selected">Small</option>
+               <option value="Medium">Medium</option>
+               <option value="Large">Large</option>
+             </select>
+             {% elif spec.specimen_size == 'Medium' %}
+             <select name="specimen_size" id="Sp_size"style="margin-left:35px ;">
+                <option value="Small" >Small</option>
+                <option value="Medium"selected="selected">Medium</option>
+                <option value="Large">Large</option>
+              </select>
+              {% else %}
+              <select name="specimen_size" id="Sp_size"style="margin-left:35px ;">
+                 <option value="Small" >Small</option>
+                 <option value="Medium">Medium</option>
+                 <option value="Large" selected="selected">Large</option>
+               </select>
+               {% endif %}
+             <br> <br> <br>
+             <label for="slides_num" style="margin-left:15px ;">Number of Slides</label>
+             <input id="slides_num" type="number" name="number_of_slides" value="{{spec.number_of_slides}}">
+             <br> <hr>
+             <input type="submit" value="save changes" style="float: right;margin-right: 15px;cursor: pointer; font-size: 22px; margin-bottom: 15px;">
+             <br> <br> 
+          </form>
+         
+
+        </div>
+
+{% endblock %}

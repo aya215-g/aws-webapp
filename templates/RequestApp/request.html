@@ -1,0 +1,89 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+        <div id="rep_form" style="width:50% ;">
+        <div class="row" style="margin-top: 4%">
+            <div class="col-4">
+               <img  src="{% static 'img/logo_un.jpg' %}"
+               style="border-radius:50% ; width: 40%;" alt="">
+            </div>
+            <div class="col-6">
+            <h6 style="text-align: center;color: black">Specialized Medical Center</h6>
+            <h2 style="text-align: center;color: #6a1a21">Pathology Department</h2>
+            </div>
+
+          </div>
+       <hr>
+
+       <div class="container " style="font-size:15px ;">
+
+            <div class="row" >
+                <pre>
+  Patient's Name : {{latest_req.patient_name}}</pre>
+            </div>
+            <hr>
+            <pre>
+  Age :{{latest_req.patient_age}}             Gender :{{latest_req.patient_sex}}
+            </pre>
+
+             <hr>
+
+            <div class="col-sm-6" >
+                <pre>
+  Nature of speciman: {{latest_req.rq_specimen_no}}
+                </pre>
+            </div>
+
+            <hr>
+<p> Report Issued at :{{latest_req.rq_date}}</p>
+               <p>
+                 rq_specimen_no  :{{latest_req.rq_specimen_no}}
+               </p>
+           </div>
+
+           <hr>
+
+      <div>
+        <h4 style="text-align: center; text-decoration: underline;">Pathology Request</h4>
+
+        <h3 style=" text-decoration: underline;"> Clinical_History_And_Investigation</h3>
+        <div style="margin-left:15px ;">
+            {{latest_req.Clinical_History_And_Investigation}}
+        </div>
+        <h3 style=" text-decoration: underline;"> referring_physician_deprt</h3>
+        <div style="margin-left:15px ;">
+            {{latest_req.referring_physician_deprt}}
+        </div>
+
+        <h3 style=" text-decoration: underline;">referring_physician_phone</h3>
+        <div style="margin-left:15px ;">
+            {{latest_req.referring_physician_phone}}
+        </div>
+          <br>
+       <h3 style=" text-decoration: underline;">Previous_pathology_report</h3>
+        <div style="margin-left:15px ;">
+            {{latest_req.Previous_pathology_report}}
+        </div>
+        <br>
+        <h3 style=" text-decoration: underline;">Nature_of_the_specimen</h3>
+        <div style="margin-left:15px ;">
+            {{latest_req.Nature_of_the_specimen}}
+        </div>
+        <h4 style="padding-left: 80% ;text-decoration: underline;">Signature</h4>
+
+        <div style="padding-left: 80% ; padding-top: 2px">
+            {{latest_req.referring_physician_name}}
+        </div>
+
+
+
+              </div>
+
+        </div>
+
+        <br> <br>
+        <a href="{% url 'add_new_specimen' %}" ><button id="spdata" style="margin-left:50px ;  font-size: larger; width: max-content;">Add Specimen Data</button></a>
+
+        <button onclick="window.print()" id="spdata" style="margin-left:50px ;  font-size: larger; width: max-content;">Print</button>
+
+{% endblock %}

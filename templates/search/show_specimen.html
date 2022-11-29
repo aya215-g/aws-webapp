@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+        <div id="specimen_form" style="width: 30%; font-size:larger;">
+          <!--   Django  -->
+         
+          
+             <p style="padding: 20px;"><label for="SP_nature" style="margin-left:15px ;">Nature of Specimen: </label>
+                <span style="color: rgb(20, 4, 56); font-weight: bolder;" >{{specimen.nature_of_specimen}}</span></p>
+            
+             <hr>
+
+             <p style="padding: 20px;" >
+             <label for="SP_size" style="margin-left:15px ;">Size:</label> 
+             <span style="color: rgb(20, 4, 56); font-weight: bolder;" >{{specimen.specimen_size}}</span>
+             </p>
+             
+              <hr>
+
+             <p style="padding: 20px;">
+             <label for="slides_num" style="margin-left:15px ;">Number of Slides: </label>
+             <span style="color: rgb(20, 4, 56); font-weight: bolder;" >{{specimen.number_of_slides}}</span>
+             <br>
+             <a href="{% url 'editSpecimen' specimen.pk %}">
+              <input type="submit" value="edit" style="float: right;margin-right: 15px;cursor: pointer; font-size: 22px; margin-bottom: 15px;">
+             </a>
+              
+              
+          
+         
+
+        </div>
+
+{% endblock %}

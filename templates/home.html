@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<div class="row">
+        <div id="card1" class="card1 col mx-lg-5">
+            <h2>Add New Report</h2>
+           <a href="{% url 'AddNewReport' %}" ><button class="card1btn">ADD</button></a>
+
+
+
+        </div>
+
+        <div id="card1" class="card1 col mx-lg-5">
+            <h2>Add New Request</h2>
+            <a  href="{% url 'NewRequest' %}" ><button class="card1btn" >ADD</button></a>
+        </div>
+</div>
+
+{% endblock %}

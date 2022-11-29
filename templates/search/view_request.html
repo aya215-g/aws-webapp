@@ -1,0 +1,148 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+        <div id="req_form" style="width: 50%;">
+          
+                    
+           
+              <table  style="position: relative;">
+                                <!--Specimen data -->
+                <table>
+                  <tr>
+                    <label> <span style="font-size: 25px;"> Data :</span></label>
+                  </tr>
+                  <br> <br>
+                  <tr>
+                        <td>
+
+                      <td>
+                          <label name="date_p">Date: </label>
+                          {{request.rq_date}}
+
+                      </td>
+                      <td>
+                        
+                          <label name="Specimen_NO">&nbsp &nbsp Specimen NO : </label>
+                          {{request.rq_specimen_no}}&nbsp &nbsp
+                                
+                      </td>
+                  </tr>
+                  </table>
+                  <br><hr>
+
+                  <!--Patient data-->
+                  <table>
+                  <tr>
+                    <label><span style="font-size: 25px;">Patient data :</span></label>
+                  </tr>
+                  <br> <br>
+              
+                        <td>
+                          <label name="name_patient">Name :  </label>
+                          {{request.patient_name}}&nbsp &nbsp
+                        </td>
+                        <td>
+                          <label name="national_id"> National ID :  </label>
+                         {{request.patient_Nid}} &nbsp &nbsp
+                        </td>
+                        <td>
+                          <label name="sex_patient">Gender :  </label>
+                          {{request.patient_sex}}&nbsp &nbsp
+                        </td>
+                        <td>
+                          <label name="age_patient"> Age : </label>
+                          {{request.patient_age}} &nbsp &nbsp
+                        </td>
+                      </tr>
+                    </table>
+                    <br><hr>
+
+                      <!--Referring Physician -->
+                      <table>
+                        <tr>
+                          <label><span style="font-size: 25px;">Referring Phyisician :</span></label>
+                        </tr>
+                        <br> <br>
+                        <td>
+                          <label name="name_ph">Name :</label>
+                         {{request.referring_physician_name}} &nbsp &nbsp
+                        </td>
+                        <td>
+                          <label name="reffering_d">Department : </label>
+                          {{request.referring_physician_deprt}}&nbsp &nbsp
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <label name="phone_ph">Phone NO :</label>
+                          {{request.referring_physician_phone}} &nbsp &nbsp
+                        </td>
+                      </tr>                 
+                </table>
+                <br><hr>
+                <!-- clinical history and Investigation Section -->
+                <table>
+                  <tr>
+                    <label name="c_history"> <span style="font-size: 25px;"> Clinical History and Investigation :</span></label>
+                  </tr>
+                  <br> <br>
+                  <tr>
+                   {{request.Clinical_History_And_Investigation}}                 
+                  </tr>
+                </table>
+                <br><hr>
+                <!--Previous pathology report-->
+                <table>
+                  <tr>
+                    <label name="p_history"> <span style="font-size: 25px;"> Previous Pathology Report :</span></label >
+                  </tr>
+                  <br> <br>
+                  <tr>
+                   {{request.Previous_pathology_report}}                  
+                  </tr>
+                </table>
+                <br><hr>
+                <!--Nature of the Specimen-->
+                <table>
+                  <tr>
+                    <label name="nature_spec"> <span style="font-size: 25px;"> Nature of the Specimen :</span></label>
+                  </tr>
+                  <br> <br>
+                  <tr>
+                   {{request.Nature_of_the_specimen}}                  
+                  </tr>
+                </table>
+                
+
+                </table>
+                <br>
+                <br>
+                <form action="{% url 'acceptRequest' request.pk %}" method="post">
+                  {% csrf_token %}
+                  enter patient type: 
+                  <input type="radio" id="OS" name="type_p" value="OS">
+                  <label for="OS">OS</label>
+                  <input type="radio" id="M" name="type_p" value="M">
+                  <label for="M">M</label>
+                  <input type="radio" id="R" name="type_p" value="R">
+                  <label for="R">R</label>
+                  <input type="radio" id="S" name="type_p" value="S">
+                  <label for="S">S</label>
+                  <hr>
+                    <label> enter patient phone: </label>
+                    <br>
+                    <input type="text" name="phone" id="phone" style="width: 30%;height: 5%">
+                    <br>
+
+
+                  <input type="submit" value="accept patient" style="margin-left: 20%">
+                </form>
+
+          
+            <br> <br>     
+        </div>
+
+        <br><br>   
+
+{% endblock %}

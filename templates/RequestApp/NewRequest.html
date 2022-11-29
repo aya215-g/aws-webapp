@@ -1,0 +1,164 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block content %}
+        <div id="req_form">
+          
+                    
+            <form id =form   method="post" style="padding-left: 5px;padding-top: 25px;" action="/NewRequest" > 
+              {% csrf_token %}
+              <table  style="position: relative;">
+                                <!--Specimen data -->
+               
+
+                  <!--Patient data-->
+                  <table>
+                  <tr>
+                    <label><span style="font-size: 25px;">Patient data :</span></label>
+                  </tr>
+                  <br> <br>
+              
+                        <td>
+                          <label name="name_patient">Name :</label>
+                          <input id="name_patient" type="text" name="name_patient" required>
+                        </td>
+                        <td>
+                          <label name="national_id"> National ID :</label>
+                          <input id="national_id" type="number" name="national_id" required>
+                        </td>
+                <td><label for="P_gender">Gender</label></td>
+                <td>
+                    <select name="gender" id="P_gender">
+                   <option value="male">Male</option>
+                  <option value="female">Female</option>
+                    </select>
+                </td>
+                        <td>
+                          <label name="age_patient"> Age :</label>
+                          <input id="age_patient" type="number" name="age_patient" required>
+                        </td>
+                      </tr>
+                    </table>
+                    <br><hr>
+
+                      <!--Referring Physician -->
+                      <table>
+                        <tr>
+                          <label><span style="font-size: 25px;">Referring Phyisician :</span></label>
+                        </tr>
+                        <br> <br>
+                        <td>
+                          <label name="name_ph">Name :</label>
+                          <input id="name_ph" type="text" name="name_ph"required>
+                        </td>
+                        <td>
+                          <label name="reffering_d">Department :</label>
+                          <input id="reffering_d"type="text" name="reffering_d" required>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <label name="phone_ph">Phone NO :</label>
+                          <input id="phone_ph" type="number" name="phone_ph" required>
+                        </td>
+                      </tr>                 
+                </table>
+                <br><hr>
+                <!-- clinical history and Investigation Section -->
+                <table>
+                  <tr>
+                    <label name="c_history"> <span style="font-size: 25px;"> Clinical History and Investigation :</span></label>
+                  </tr>
+                  <br> <br>
+                  <tr>
+                    <textarea id="G_exam" name="c_history" rows="5" cols="50" style="margin-left:15px ; margin-right: 15px;overflow-y: scroll;"required></textarea>
+                  </tr>
+                </table>
+                <br><hr>
+                <!--Previous pathology report-->
+                <table>
+                  <tr>
+                    <label name="p_history"> <span style="font-size: 25px;"> Previous Pathology Report :</span></label >
+                  </tr>
+                  <br> <br>
+                  <tr>
+                    <textarea id="G_exam" name="p_history" rows="5" cols="50" style="margin-left:15px ; margin-right: 15px;overflow-y: scroll;" required></textarea>
+                  </tr>
+                </table>
+                <br><hr>
+                <!--Nature of the Specimen-->
+                <table>
+                  <tr>
+                    <label name="nature_spec"> <span style="font-size: 25px;"> Nature of the Specimen :</span></label>
+                  </tr>
+                  <br> <br>
+                  <tr>
+                    <textarea id="G_exam" name="nature_spec" rows="5" cols="50" style="margin-left:15px ; margin-right: 15px;overflow-y: scroll;" required></textarea>
+                  </tr>
+                </table>
+
+
+                </table>
+
+                <br> <br> <br>
+                <input id="add_req" type="submit" value="ADD" >
+                <br> <br>
+            </form>
+            <br> <br>
+        </div>
+
+    </button>
+
+
+
+
+    <script>
+  const Specimen_NO = document.getElementById('Specimen_NO')
+
+  const errorElement = document.getElementById('error')
+
+  form.addEventListener('submit', (e) => {
+          let messages = []
+          if (Specimen_NO.value === '' || Specimen_NO.value == null) {
+              messages.push('Specimen_NO is required')
+          }
+          if (date_p.value === '' || date_p.value == null) {
+            messages.push('Date is required')
+        }
+
+        if (name_patient.value === '' || name_patient.value == null) {
+          messages.push('name patient is required')
+      }
+      if (sex_patient.value === '' || sex_patient.value == null) {
+        messages.push('sex patient is required')
+    }
+    if (national_id.value === '' || national_id.value == null) {
+      messages.push('national id is required')
+  }
+  if (age_patient.value === '' || age_patient.value == null) {
+    messages.push('age is required')
+}
+if (name_ph.value === '' || name_ph.value == null) {
+  messages.push('name_ph is required')
+}
+
+if (reffering_d.value === '' || reffering_d.value == null) {
+  messages.push('reffering_d is required')
+}
+if (phone_ph.value === '' || phone_ph.value == null) {
+  messages.push('phone is required')
+}
+if (c_history.value === '' || c_history.value == null) {
+  messages.push('c_history is required')
+}
+if (p_history.value === '' || p_history.value == null) {
+  messages.push('p_history is required')
+}
+if (nature_spec.value === '' || nature_spec.value == null) {
+  messages.push('nature_spec is required')
+}
+
+    })
+  </script>
+{% endblock %}

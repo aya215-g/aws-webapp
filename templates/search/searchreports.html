@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+      <center> <h2 style="color: #0e0e34;">Reports</h2></center> 
+
+{% for report in show_report %}
+
+<div class="row">
+<div id="card1" class="card1 col mx-lg-5">
+    <div class="col-4">
+        <a href="{% url 'showReport' report.pk %}" class="btn "
+           style="text-decoration:none ; font-size: 20px; color: rgb(2, 6, 56);">
+        {{report.patient.patient_type}} /{{report.report_issued_at}}/id:{{report.pathology_number}}
+        </a>
+
+    </div>
+<div class="col-12">
+            <a class="btn"  href="{% url "update_report"  report.pk %}" style="margin-top: 0; margin-left: 80%;margin-bottom: 15px">update</a>
+
+</div>
+
+<!--    <th><label>if there is a patient record and you create the request first</label></th>  -->
+<!--    <tr>
+          <th><label>if there is no patient record and you create a report before request</label></th>
+        <td>
+            <a class="btn" style="margin-top: 5px; margin-left: 80%;" href="" >update</a>
+        </td>
+    </tr>
+-->
+
+</div>
+
+</div>
+
+
+{% endfor %}
+
+{% endblock %}
